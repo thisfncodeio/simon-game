@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scripts.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Simon</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 10px;
+        }
+
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #eee;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        header h1 {
+            color: #ccc;
+            font-family: 'Bangers', cursive;
+            font-size: 13rem;
+            letter-spacing: 2px;
+            text-shadow:
+                -3px -3px 0 #000,
+                3px -3px 0 #000,
+                -3px 3px 0 #000,
+                3px 3px 0 #000;
+        }
+
+        header a {
+            color: black;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+
+        header a:visited {
+            color: black;
+        }
+
+        .gameboard {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* outline: 5px solid green; */
+            margin-top: 20px;
+        }
+
+        .pieces {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(2, 300px);
+            gap: 20px;
+
+            background-color: #333;
+            border-radius: 50%;
+            padding: 25px;
+            /* outline: 3px solid orangered; */
+        }
+
+        .color-btn {
+            cursor: pointer;
+        }
+
+        #green {
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            border-radius: 300px 0 0 0;
+        }
+
+        #red {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            border-radius: 0 300px 0 0;
+        }
+
+        #blue {
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            border-radius: 0 0 300px 0;
+        }
+
+        #yellow {
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+            border-radius: 0 0 0 300px;
+        }
+
+        .controls-container {
+            display: grid;
+            place-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            background-color: #333;
+            border-radius: 50%;
+            width: 240px;
+            height: 240px;
+        }
+
+        .controls {
+            position: relative;
+            place-items: center;
+            background-color: #eee;
+            border: 10px solid #eee;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        #start-btn {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background-color: #ccc;
+            border: none;
+            border-radius: 0 0 7px 7px;
+            cursor: pointer;
+            font-size: 2rem;
+            height: 45%;
+            width: 180px;
+            text-transform: uppercase;
+        }
+
+        #start-btn:focus {
+            outline: none;
+        }
+
+        #level-text {
+            position: absolute;
+            top: 56%;
+            left: 50%;
+            transform: translate(-50%, -56%);
+
+            color: #888;
+            font-family: sans-serif;
+            font-size: 1.4rem;
+            font-weight: bold;
+
+            /* outline: 5px solid green; */
+        }
+
+        #level {
+            display: grid;
+            place-items: center;
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translate(-50%, 15%);
+
+            background-color: #222;
+            border: 3px inset #999;
+            color: orangered;
+            font-family: sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            height: 50px;
+            text-align: center;
+            width: 33.3%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Simon!</h1>
+        <a href="https://www.ultraboardgames.com/simon/game-rules.php" target="_blank">How to Play</a>
+    </header>
+    <main class="gameboard">
+        <div class="pieces">
+            <div id="green" class="color-btn"></div>
+            <div id="red" class="color-btn"></div>
+            <div id="yellow" class="color-btn"></div>
+            <div id="blue" class="color-btn"></div>
+            <div class="controls-container">
+                <div class="controls">
+                    <button id="start-btn">start</button>
+                    <p id="level-text">Level</p>
+                    <p id="level">-</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.querySelectorAll(".color-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                console.dir(e.target.id);
+            });
+        });
+    </script>
+</body>
+
+</html>
