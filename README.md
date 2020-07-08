@@ -1,1 +1,1 @@
-Creating a browser version of the Simon Says game
+Creating a browser version of the Simon game
